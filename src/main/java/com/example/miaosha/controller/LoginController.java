@@ -11,34 +11,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/demo")
+@RequestMapping("/login")
 public class LoginController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/thymeleaf")
-    public String thymeleaf(Model model){
-        model.addAttribute("name","hh");
-        return "hello";
+    @RequestMapping("/to_login")
+    public String toLogin(){
+        return "login";
     }
 
-    @RequestMapping("/hello")
+    @RequestMapping("/do_login")
     @ResponseBody
     public Result<String> hello(){
-        return Result.success("hello,imooc");
+        return null;
     }
 
-    @RequestMapping("/helloError")
-    @ResponseBody
-    public Result<String> helloError(){
-        return Result.error(CodeMsg.SERVER_ERROR);
-    }
-
-    @RequestMapping("/getUser")
-    @ResponseBody
-    public Result<User> getUser(){
-        User user = userService.getById(1);
-        return Result.success(user);
-    }
 }
